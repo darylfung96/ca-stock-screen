@@ -21,6 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda create -n py39 python=3.9
+        pip install -r requirements.txt
     - name: Lint with flake8
       run: |
         conda install flake8
