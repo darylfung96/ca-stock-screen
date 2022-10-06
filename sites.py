@@ -115,7 +115,7 @@ class TradingViewScreener(Screener):
 			print()
 
 	def switch_tab(self, tab_name):
-		self.driver.find_elements(By.CLASS_NAME, 'itemsWrap-1EEezFCx')[0].find_elements(By.XPATH,
+		self.driver.find_elements(By.CLASS_NAME, 'itemContent-RgmcRkjO')[0].find_elements(By.XPATH,
 		                                                                                f"//*[text()='{tab_name}']")[
 			-1].click()
 		time.sleep(1)
@@ -132,7 +132,7 @@ class TradingViewScreener(Screener):
 
 	def get_top_eps(self, count):
 		eps = self.driver.find_elements(By.XPATH, '//td[@data-field-key="earnings_per_share_basic_ttm"]')[:count]
-		eps = [float(re.sub(r'[^\x00-\x7F]+','-', current_eps.text.replace('CAD', ''))) if len(current_eps.text) > 1 else 0 for current_eps in eps]
+		eps = [float(re.sub(r'[^\x00-\x7F]+', '-', current_eps.text.replace('CAD', ''))) if len(current_eps.text) > 1 else 0 for current_eps in eps]
 		return eps
 
 	def get_top_margins(self, count):
